@@ -11,8 +11,8 @@ public class LibraryManager
         Scanner in = new Scanner(System.in);
         Library lib1 = new Library("South Irving Library");
         lib1.addPublication(new Publication("The Martian", "Andy Weir", 2015));
-        lib1.addPublication(new Publication("Atomic Habits", "James Clear", 2019));
-        lib1.addPublication(new Publication("1987", "George Orwell", 1970));
+        lib1.addPublication(new Publication("Fahrenheit 451", "Ray Bradbury", 1953));
+        lib1.addPublication(new Publication("1984", "George Orwell", 1961));
         System.out.println(lib1);
         
         System.out.println("Which book would you like to check out?");

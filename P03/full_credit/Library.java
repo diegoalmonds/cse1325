@@ -25,7 +25,7 @@ public class Library
         }
         catch(IndexOutOfBoundsException ioe)
         {
-            System.out.println("Index" + publicationIndex + "does not exist in publications.");
+            System.err.println("\nIndex " + publicationIndex + " does not exist in publications.\n");
         }
     }
 
