@@ -4,7 +4,6 @@ public class Library
 {
     private String name;
     private ArrayList<Publication> publications;
-    private ArrayList<Patron> patrons;
 
 
     public Library(String name)
@@ -18,26 +17,11 @@ public class Library
         publications.add(publication);
     }
 
-    public void addPatron(Patron patron)
-    {
-        patrons.add(patron);
-    }
-
-    public String patronMenu()
-    {
-        String patronMenu = "List of Patrons:\n\n";
-        for (Patron p: patrons)
-        {
-            patronMenu += p + "\n\n"; 
-        }
-        return patronMenu;
-    }
-
-    public void checkOut(int publicationIndex, int patronIndex)
+    public void checkOut(int publicationIndex, String patron)
     {
         try
         {
-            publications.get(publicationIndex).checkOut(patronIndex);
+            publications.get(publicationIndex).checkOut(patron);
         }
         catch(IndexOutOfBoundsException ioe)
         {

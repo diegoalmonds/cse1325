@@ -6,7 +6,7 @@ public class LibraryManager
 {
     public static void main(String[] args)
     {
-        String name, email;
+        String name;
         int index;
         Scanner in = new Scanner(System.in);
         Library lib1 = new Library("South Irving Library");
@@ -20,10 +20,7 @@ public class LibraryManager
         in.nextLine();
         System.out.println("What is your name?");
         name = in.nextLine();
-        System.out.println("What is your email?");
-        email = in.nextLine();
-        Patron person1 = new Patron(name, email);
-        lib1.checkOut(index, person1);
+        lib1.checkOut(index, name);
 
         System.out.println(lib1);
     }
