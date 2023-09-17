@@ -1,3 +1,10 @@
+/** 
+ * Creates object to store library patron information.
+ * 
+ * @author Diego Olmos
+ * @version 1.0
+ * @since 1.0
+ */
 package library;
 
 public class Patron

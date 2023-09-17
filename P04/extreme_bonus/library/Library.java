@@ -1,3 +1,11 @@
+/** 
+ * Models a Library.
+ * 
+ * @author      Diego Olmos
+ * @version     1.0
+ * @since       1.0
+ */
+
 package library;
 
 import java.util.ArrayList;

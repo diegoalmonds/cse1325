@@ -1,3 +1,10 @@
+/** 
+ * Superclass for all types of publications (e.g videos, book, etc.)
+ * 
+ * @author Diego Olmos
+ * @version 1.0
+ * @since 1.0
+ */
 package library;
 
 import java.time.LocalDate;
@@ -33,10 +40,21 @@ public class Publication
     */
     @Override
     public String toString()
-    {   
+    {
+        /*   
+        StringBuilder publication = new StringBuilder();
         if (this.loanedTo == null)
-            return String.format("Title: %s    Author: %s    copyright %d\n", title, author, copyright);
-        return String.format("Title: %s    Author: %s    copyright: %d\n    CHECKED OUT BY: %s\n    DUE BY: %s\n", title, author, copyright, loanedTo, dueDate.toString());
+            publication.append(String.format("Title: %s    Author %s    copyright %d\n", title, author, copyright));
+        else
+            publication.append(String.format("Title: %s    Author: %s    copyright %d\n    CHECKED OUT BY: %s\n    DUE BY: %s\n", title, author, copyright, loanedTo, dueDate.toString));
+        return publication.toString();
+        */
+        String publication;
+        if (this.loanedTo == null)
+            publication = String.format("Title: %s    Author: %s    copyright %d\n", title, author, copyright);
+        else
+            publication = String.format("Title: %s    Author: %s    copyright: %d\n    CHECKED OUT BY: %s\n    DUE BY: %s\n", title, author, copyright, loanedTo, dueDate.toString());
+        return publication;
     }
     
 }

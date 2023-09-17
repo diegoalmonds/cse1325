@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import library.InvalidRuntimeException;
+
 public class LibraryManager
 {
     public static void main(String[] args)
@@ -38,6 +40,10 @@ public class LibraryManager
         catch (IllegalArgumentException iae)
         {
             System.err.println("The copyright year is not valid " + iae);
+        }
+        catch (InvalidRuntimeException ire)
+        {
+            
         }
         catch (Exception e)
         {
