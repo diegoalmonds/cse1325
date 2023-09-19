@@ -13,7 +13,7 @@ public class Patron
     private String email;
 
     /**
-     * Creates an instance of Patron
+     * Creates an instance of Patron.
      * 
      * @param name          name of the patron
      * @param email         email of the patron
@@ -26,7 +26,7 @@ public class Patron
     }
 
     /**
-     * Returns the patron's information
+     * Returns the patron's information.
      * 
      * @return              String name and email of the patron
      * @since               1.0

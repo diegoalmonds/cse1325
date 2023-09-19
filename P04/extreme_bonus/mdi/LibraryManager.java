@@ -6,8 +6,6 @@ import java.io.FileNotFoundException;
 import java.time.Duration;
 import java.util.Scanner;
 
-import library.InvalidRuntimeException;
-
 public class LibraryManager
 {
     public static void main(String[] args)
@@ -26,14 +24,7 @@ public class LibraryManager
                 if (type.equals("Book"))
                     lib1.addPublication(new Publication(textInput.nextLine(), textInput.nextLine(), Integer.parseInt(textInput.nextLine())));
                 if (type.equals("Video"))
-                {
-                    //lib1.addPublication(new Video(textInput.nextLine(), textInput.nextLine(), Integer.parseInt(textInput.nextLine()), textInput.nextLine()));
-                    System.out.println(textInput.nextLine());
-                    System.out.println(textInput.nextLine());
-                    System.out.println(textInput.nextLine());
-                    Duration dur1 = Duration.ofMinutes(Integer.parseInt(textInput.nextLine()));
-                    System.out.println(dur1.toMinutes());
-                }
+                    lib1.addPublication(new Video(textInput.nextLine(), textInput.nextLine(), Integer.parseInt(textInput.nextLine()), Integer.parseInt(textInput.nextLine())));
             }
             while (textInput.hasNextLine())
             {
@@ -51,15 +42,19 @@ public class LibraryManager
         }
         catch (IllegalArgumentException iae)
         {
-            System.err.println("The copyright year is not valid " + iae);
+            System.err.println("The copyright year is not valid\n" + iae);
         }
         catch (InvalidRuntimeException ire)
         {
-            
+            System.err.println(ire);
+        }
+        catch (ArrayIndexOutOfBoundsException aie)
+        {
+            System.err.println("Filename was not entered as an argument\n" + aie);
         }
         catch (Exception e)
         {
-            System.err.println("The index entered does not exist " + e);
+            System.err.println("The index entered does not exist\n" + e);
         }
     }
 }

@@ -16,7 +16,7 @@ public class Library
     private ArrayList<Patron> patrons;
 
     /**
-     * Creates a library instance
+     * Creates a library instance.
      * 
      * @param name              name of the library
      * @since                   1.0
@@ -30,7 +30,7 @@ public class Library
     }
 
     /**
-     * Adds a publicaation to the end of the publications ArrayList
+     * Adds a publicaation to the end of the publications ArrayList.
      * 
      * @param publication       Publication to be added to the ArrayList
      * @since                   1.0
@@ -41,7 +41,7 @@ public class Library
     }
 
     /**
-     * Adds a patron to the end of the patrons ArrayList
+     * Adds a patron to the end of the patrons ArrayList.
      * 
      * @param patron            Patron to be added to the ArrayList
      * @since                   1.0
@@ -52,7 +52,7 @@ public class Library
     }
 
     /**
-     * Prints a menu showing each patron in the patron ArrayList
+     * Prints a menu showing each patron in the patron ArrayList.
      * 
      * @return                  String showing each patron's information on seperate lines
      * @since                   1.0
@@ -66,7 +66,7 @@ public class Library
     }
 
     /**
-     * Calls the chosen publication's checkOut method with a patron parameter passed in
+     * Calls the chosen publication's checkOut method with a Patron parameter passed in.
      * 
      * @param publicationIndex  Index of the publication shown when printing library
      * @param patronIndex       Index of the patron shown in patronMenu
@@ -78,7 +78,7 @@ public class Library
     }
 
     /**
-     * Prints a menu showing the library name and all the publications
+     * Prints a menu showing the library name and all the publications.
      * 
      * @return                  String with all the publications listed
      * @since                   1.0

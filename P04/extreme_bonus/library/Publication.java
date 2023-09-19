@@ -3,7 +3,7 @@ package library;
 import java.time.LocalDate;
 
 /** 
- * Superclass for all types of publications (e.g videos, book, etc.)
+ * Superclass for all types of publications (e.g videos, book, etc.).
  * 
  * @author          Diego Olmos
  * @version         1.0
@@ -18,7 +18,7 @@ public class Publication
     private LocalDate dueDate;
 
     /**
-     * Creates an instance of publication
+     * Creates an instance of publication.
      * 
      * @param title             the title of the publication 
      * @param author            the author of the publication 
@@ -35,7 +35,7 @@ public class Publication
     }
 
     /**
-     * Sets the publication's loanedTo field to the patron that was passed in and sets the due date 14 days after the current date
+     * Sets the publication's loanedTo field to the patron that was passed in and sets the due date 14 days after the current date.
      * 
      * @param patron            the patron object that will checkout the publication
      * @since                   1.0
@@ -53,7 +53,7 @@ public class Publication
     */
 
     /**
-     * Prints all the publication's information
+     * Prints all the publication's information.
      * 
      * @return                  String the fields of the publication
      * @since                   1.0
@@ -64,18 +64,10 @@ public class Publication
 
         StringBuilder publication = new StringBuilder();
         if (this.loanedTo == null)
-            publication.append(String.format("Book Title: \"%s\"    Author %s    copyright %d\n", title, author, copyright));
+            publication.append(String.format("Book Title: \"%s\"    Author: %s    copyright %d    \n", title, author, copyright));
         else
-            publication.append(String.format("Title: %s    Author: %s    copyright %d\n    CHECKED OUT BY: %s\n    DUE BY: %s\n", title, author, copyright, loanedTo, dueDate.toString()));
+            publication.append(String.format("Book Title: \"%s\"    Author: %s    copyright %d    \n    CHECKED OUT BY: %s\n    DUE BY: %s\n", title, author, copyright, loanedTo, dueDate.toString()));
         return publication.toString();
-        /*
-        String publication;
-        if (this.loanedTo == null)
-            publication = String.format("Title: %s    Author: %s    copyright %d\n", title, author, copyright);
-        else
-            publication = String.format("Title: %s    Author: %s    copyright: %d\n    CHECKED OUT BY: %s\n    DUE BY: %s\n", title, author, copyright, loanedTo, dueDate.toString());
-        return publication;
-        */
     }
     
 }
