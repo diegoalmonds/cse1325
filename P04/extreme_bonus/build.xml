@@ -8,7 +8,7 @@
   </target>
 
   <target name="javadoc" description="Compile source tree java files">
-      <javadoc packagenames="complex.*"
+      <javadoc packagenames="library.*"
            sourcepath="."
            excludepackagenames="com.dummy.test.doc-files.*"
            defaultexcludes="yes"
@@ -16,9 +16,9 @@
            author="true"
            version="true"
            use="true"
-           windowtitle="Complex API">
-      <doctitle><![CDATA[<h1>Complex</h1>]]></doctitle>
-      <bottom><![CDATA[<i>Copyright &#169; 2021 Professor George F. Rice. Licensed as CC BY-SA International 4.0</i>]]></bottom>
+           windowtitle="Library API">
+      <doctitle><![CDATA[<h1>Library</h1>]]></doctitle>
+      <bottom><![CDATA[<i>Copyright &#169; 2021 Professor George F. Rice. </i>]]></bottom>
       <tag name="license.agreement" scope="all" description="Licensed under:"/>
     </javadoc>
   </target>

@@ -1,14 +1,15 @@
+package library;
+
 /** 
  * Custom exception for runtime below 0 seconds
  * 
- * @author Diego Olmos
- * @version 1.0
- * @since 1.0
+ * @author              Diego Olmos
+ * @version             1.0
+ * @since               1.0
  */
-package library;
-
 public class InvalidRuntimeException extends ArithmeticException
 {
+
     public InvalidRuntimeException()
     {
         super();

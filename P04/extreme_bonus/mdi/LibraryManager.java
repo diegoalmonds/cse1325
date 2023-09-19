@@ -1,7 +1,9 @@
 package mdi;
 
+import library.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.Duration;
 import java.util.Scanner;
 
 import library.InvalidRuntimeException;
@@ -12,23 +14,33 @@ public class LibraryManager
     {
         try
         {
-            String name;
+            String type, name;
             File libraryText = new File(args[0]);
             Scanner textInput = new Scanner(libraryText);
-            library.Library lib1 = new library.Library(textInput.nextLine());
+            Library lib1 = new Library(textInput.nextLine());
             while (textInput.hasNextLine())
             {
-                name = textInput.nextLine();
-                if (name.isEmpty())
+                type = textInput.nextLine();
+                if (type.isEmpty())
                     break;
-                lib1.addPublication(new library.Publication(name, textInput.nextLine(), Integer.parseInt(textInput.nextLine())));
+                if (type.equals("Book"))
+                    lib1.addPublication(new Publication(textInput.nextLine(), textInput.nextLine(), Integer.parseInt(textInput.nextLine())));
+                if (type.equals("Video"))
+                {
+                    //lib1.addPublication(new Video(textInput.nextLine(), textInput.nextLine(), Integer.parseInt(textInput.nextLine()), textInput.nextLine()));
+                    System.out.println(textInput.nextLine());
+                    System.out.println(textInput.nextLine());
+                    System.out.println(textInput.nextLine());
+                    Duration dur1 = Duration.ofMinutes(Integer.parseInt(textInput.nextLine()));
+                    System.out.println(dur1.toMinutes());
+                }
             }
             while (textInput.hasNextLine())
             {
                 name = textInput.nextLine();
                 if (name.isEmpty())
                     break;
-                lib1.addPatron(new library.Patron(name, textInput.nextLine()));
+                lib1.addPatron(new Patron(name, textInput.nextLine()));
             }
             System.out.println(lib1);
             int publicationIndex = Integer.parseInt(System.console().readLine("\nWhat book would you like to check out? "));
