@@ -119,12 +119,10 @@ public class LibraryManagerMenu
             {
                 System.err.println("Filename was not entered as an argument\n" + aie);
             }
-            /*
             catch (FileNotFoundException fnfe)
             {
                 System.err.println("Filename entered does not exist\n" + fnfe);
             }
-            */
             catch (Exception e)
             {
                 System.err.println("The index entered does not exist\n" + e);
