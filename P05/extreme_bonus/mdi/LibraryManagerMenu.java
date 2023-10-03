@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class LibraryManagerMenu
 {
-    public Library loadLibraryFile(String filename)
+    public Library loadLibraryFile(String filename) throws FileNotFoundException
     {
         String type, name;
         File libraryText = new File(filename);
@@ -43,8 +43,7 @@ public class LibraryManagerMenu
     {
         String input = System.console().readLine("Enter the information of the publication in the following format\n[TITLE],[AUTHOR],[COPYRIGHT YEAR]\n");
         String[] publicationInfo = input.split(",");
-        Publication publication = new Publication(publicationInfo[0], publicationInfo[1], Integer.parseInt(publicationInfo[2]));
-        library.addPublication(publication);
+        library.addPublication(new Publication(publicationInfo[0], publicationInfo[1], Integer.parseInt(publicationInfo[2])));
     }
 
     public void addVideo(Library library)
@@ -78,12 +77,12 @@ public class LibraryManagerMenu
         LibraryManagerMenu menu = new LibraryManagerMenu();
         String input;
         String file = "library.txt";
-        int command;
-        Library library = menu.loadLibraryFile(file);
+        int command;        
         while (true)
         {
             try
             {
+                Library library = menu.loadLibraryFile(file);
                 System.out.println("Library Menu:\n");
                 System.out.println("0) Load a library file\n");
                 System.out.println("1) List all publications\n");
@@ -101,11 +100,11 @@ public class LibraryManagerMenu
                     file = System.console().readLine("Enter the name of the library file: ");
                     library = menu.loadLibraryFile(file);
                 }
-                if (command == 1) menu.listPublications(library);
+                if (command == 1) System.out.println(menu.listPublications(library));
                 if (command == 2) menu.addPublication(library);
                 if (command == 3) menu.addVideo(library);
                 if (command == 4) menu.addPatron(library);
-                if (command == 5) menu.listPatrons(library);
+                if (command == 5) System.out.println(menu.listPatrons(library));
             }
             catch (IllegalArgumentException iae)
             {
@@ -130,4 +129,3 @@ public class LibraryManagerMenu
         }
     }
 }
-
