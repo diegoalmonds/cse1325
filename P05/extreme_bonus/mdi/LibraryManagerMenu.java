@@ -45,6 +45,7 @@ public class LibraryManagerMenu
         String[] publicationInfo = input.split(",");
         library.addPublication(new Publication(publicationInfo[0], publicationInfo[1], Integer.parseInt(publicationInfo[2])));
     }
+    
 
     public void addVideo(Library library)
     {
@@ -56,7 +57,7 @@ public class LibraryManagerMenu
 
     public void addPatron(Library library)
     {
-        String input = System.console().readLine("Enter the information of the patron in the following format\n[NAME],[EMAIL]");
+        String input = System.console().readLine("Enter the information of the patron in the following format\n[NAME],[EMAIL]\n");
         String[] patronInfo = input.split(",");
         Patron patron = new Patron(patronInfo[0], patronInfo[1]);
         library.addPatron(patron);
@@ -66,30 +67,47 @@ public class LibraryManagerMenu
     {
         return library.patronMenu();
     }
-    /*
-    public void checkOut()
+    
+    public void checkOut(Library library)
     {
-
+        System.out.println(library);
+        int publicationIndex = Integer.parseInt(System.console().readLine("\nWhat book would you like to check out? "));
+        System.out.println(library.patronMenu());
+        int patronIndex = Integer.parseInt(System.console().readLine("\nWhat patron are you? "));
+        library.checkOut(publicationIndex, patronIndex);
     }
-    */
+
+    public void checkIn(Library library)
+    {
+        System.out.println(library);
+        int publicationIndex = Integer.parseInt(System.console().readLine("Which publication would you like to check in? "));
+        library.checkIn(publicationIndex);
+    }
+    
     public static void main(String[] args)
     {
         LibraryManagerMenu menu = new LibraryManagerMenu();
         String input;
         String file = "library.txt";
-        int command;        
+        int command;
+        boolean libraryLoaded = false;
+        Library library = new Library("default");        
         while (true)
         {
             try
             {
-                Library library = menu.loadLibraryFile(file);
+                if (!libraryLoaded)
+                {
+                    library = menu.loadLibraryFile(file);
+                    libraryLoaded = true;
+                }
                 System.out.println("Library Menu:\n");
                 System.out.println("0) Load a library file\n");
                 System.out.println("1) List all publications\n");
                 System.out.println("2) Add a new publication\n");
                 System.out.println("3) Add a new video\n");
                 System.out.println("4) Add a new patron to the library\n");
-                System.out.println("5) List all patron\n");
+                System.out.println("5) List all patrons\n");
                 System.out.println("6) Check out a publication\n");
                 System.out.println("7) Check in a publication\n");
                 input = System.console().readLine("Enter your selection ('x' to exit): ");
@@ -98,13 +116,15 @@ public class LibraryManagerMenu
                 if (command == 0)
                 {
                     file = System.console().readLine("Enter the name of the library file: ");
-                    library = menu.loadLibraryFile(file);
+                    libraryLoaded = false;
                 }
                 if (command == 1) System.out.println(menu.listPublications(library));
                 if (command == 2) menu.addPublication(library);
                 if (command == 3) menu.addVideo(library);
                 if (command == 4) menu.addPatron(library);
                 if (command == 5) System.out.println(menu.listPatrons(library));
+                if (command == 6) menu.checkOut(library);
+                if (command == 7) menu.checkIn(library);
             }
             catch (IllegalArgumentException iae)
             {
@@ -124,7 +144,7 @@ public class LibraryManagerMenu
             }
             catch (Exception e)
             {
-                System.err.println("The index entered does not exist\n" + e);
+                System.err.println("One or more indexes entered do not exist\n" + e);
             }
         }
     }

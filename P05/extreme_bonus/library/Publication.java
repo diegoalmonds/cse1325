@@ -45,12 +45,18 @@ public class Publication
         this.loanedTo = patron;
         this.dueDate = LocalDate.now().plusDays(14);
     }
-    /*
+    /**
+     * Sets the loanedTo and dueDate fields of the publication to null
+     * 
+     * @since 1.0
+     * 
+     */
     public void checkIn()
     {
-
+        this.loanedTo = null;
+        this.dueDate = null;
     }
-    */
+    
 
     /**
      * Prints all the publication's information.

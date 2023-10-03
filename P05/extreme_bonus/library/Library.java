@@ -76,6 +76,16 @@ public class Library
     {
         publications.get(publicationIndex).checkOut(patrons.get(patronIndex));
     }
+    /**
+     * Calls the checkIn method of the chosen publication
+     * 
+     * @param publicationIndex  Index of the publication being checked in
+     * @since                   1.0
+     */
+    public void checkIn(int publicationIndex)
+    {
+        publications.get(publicationIndex).checkIn();
+    }
 
     /**
      * Prints a menu showing the library name and all the publications.
