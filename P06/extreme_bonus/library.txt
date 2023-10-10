@@ -1,0 +1,35 @@
+South Irving Library
+4
+PUBLICATION
+The Martian
+Andy Weir
+2014
+CHECKED IN
+VIDEO
+Star Wars
+George Lucas
+1979
+CHECKED OUT
+Kendrick Lamar	kungfukenny@gmail.com
+2023
+10
+22
+180
+PUBLICATION
+Oppenheimer
+Christopher Nolan
+2023
+CHECKED IN
+VIDEO
+Barbie
+Greta Gerwig
+2023
+CHECKED IN
+114
+3
+Diego Olmos
+mmdiego06@gmail.com
+Kendrick Lamar
+kungfukenny@gmail.com
+Tyler The Creator
+golflefleur@gmail.com
