@@ -80,11 +80,13 @@ public class WordSearch {
             + NUM_THREADS + " threads"); // Show the # puzzles and threads
         // Solve all puzzles
         //solve(0, 0, NUM_PUZZLES);
-        final int SUBSET_SIZE = NUM_PUZZLES/NUM_THREADS;
-        for (int threadID = 0; threadID < NUM_THREADS-1; threadID++)
+        int SUBSET_SIZE = NUM_PUZZLES/NUM_THREADS;
+        for (int threadID = 0; threadID < NUM_THREADS; threadID++)
         {
-            final int ID = threadID;
-            threads.add(new Thread(() -> solve(ID, ID*SUBSET_SIZE, (ID*SUBSET_SIZE)+SUBSET_SIZE)));
+            int ID = threadID;
+            int firstPuzzle = threadID*SUBSET_SIZE;
+            int lastPuzzlePlusOne = (threadID*SUBSET_SIZE)+SUBSET_SIZE;
+            threads.add(new Thread(() -> solve(ID, firstPuzzle, lastPuzzlePlusOne)));
             threads.get(threadID).start();
         }
         for (Thread t : threads)
