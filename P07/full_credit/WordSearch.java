@@ -83,7 +83,8 @@ public class WordSearch {
         final int SUBSET_SIZE = NUM_PUZZLES/NUM_THREADS;
         for (int threadID = 0; threadID < NUM_THREADS-1; threadID++)
         {
-            threads.add(new Thread((threadID) -> solve(threadID, threadID, threadID)));
+            final int ID = threadID;
+            threads.add(new Thread(() -> solve(ID, ID*SUBSET_SIZE, (ID*SUBSET_SIZE)+SUBSET_SIZE)));
             threads.get(threadID).start();
         }
         for (Thread t : threads)
@@ -102,13 +103,21 @@ public class WordSearch {
     public void solve(final int threadID, final int firstPuzzle, final int lastPuzzlePlusOne) {
         System.err.println("Thread " + threadID + ": " + firstPuzzle + "-" + (lastPuzzlePlusOne-1));
         for(int i=firstPuzzle; i<lastPuzzlePlusOne; ++i) {
-            Puzzle p = puzzles.get(i); //reads puzzles
+            Puzzle p;
+            synchronized (puzzlesMutex)
+            {
+                p = puzzles.get(i); //reads puzzles
+            }
             Solver solver = new Solver(p);
             for(String word : p.getWords()) {
                 try {
                     Solution s = solver.solve(word);
                     if(s == null) System.err.println("#### Failed to solve " + p.name() + " for '" + word + "'");
-                    else solutions.add(s); //writes to solutions
+                    else {
+                        synchronized (solutionsMutex) { 
+                            solutions.add(s); //writes to solutions
+                        }
+                    }
                 } catch (Exception e) {
                     System.err.println("#### Exception solving " + p.name() 
                         + " for " + word + ": " + e.getMessage());
@@ -132,6 +141,8 @@ public class WordSearch {
     public final int NUM_PUZZLES;
     public final boolean verbose;
 
-    private List<Puzzle> puzzles = new ArrayList<>();;
+    private List<Puzzle> puzzles = new ArrayList<>();
     private SortedSet<Solution> solutions = new TreeSet<Solution>();
+    private Object solutionsMutex = new Object();
+    private Object puzzlesMutex = new Object();
 }
