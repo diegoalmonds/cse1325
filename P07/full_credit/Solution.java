@@ -1,4 +1,4 @@
-public class Solution { 
+public class Solution implements Comparable<Solution>{ 
     public Solution(String name, String word, int x, int y, Direction direction) {
         this.name = name;
         this.word = word;
@@ -9,6 +9,16 @@ public class Solution {
     @Override
     public String toString() {
         return String.format("In %s: %s found at (%d,%d,%s)", name, word, x, y, direction);
+    }
+
+    @Override
+    public int compareTo(Solution comparison)
+    {
+        if((this.name).equals(comparison.name))
+        {
+            return (this.word).compareTo(comparison.word);
+        }
+        return (this.name).compareTo(comparison.name);
     }
 
     private String name;

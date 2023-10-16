@@ -3,7 +3,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
-
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -74,22 +75,40 @@ public class WordSearch {
     // Modify THIS method to divide up the puzzles among your threads!
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     public void solve() {
+        ArrayList<Thread> threads = new ArrayList<>();
         System.err.println ("\n" + NUM_PUZZLES + " puzzles with " 
             + NUM_THREADS + " threads"); // Show the # puzzles and threads
         // Solve all puzzles
-        solve(0, 0, NUM_PUZZLES);
+        //solve(0, 0, NUM_PUZZLES);
+        final int SUBSET_SIZE = NUM_PUZZLES/NUM_THREADS;
+        for (int threadID = 0; threadID < NUM_THREADS-1; threadID++)
+        {
+            threads.add(new Thread((threadID) -> solve(threadID, threadID, threadID)));
+            threads.get(threadID).start();
+        }
+        for (Thread t : threads)
+        {
+            try
+            {
+                t.join();
+            }
+            catch (InterruptedException ie) 
+            {
+                System.err.println(ie);
+            }
+        }
     }
 
-    public void solve(int threadID, int firstPuzzle, int lastPuzzlePlusOne) {
+    public void solve(final int threadID, final int firstPuzzle, final int lastPuzzlePlusOne) {
         System.err.println("Thread " + threadID + ": " + firstPuzzle + "-" + (lastPuzzlePlusOne-1));
         for(int i=firstPuzzle; i<lastPuzzlePlusOne; ++i) {
-            Puzzle p = puzzles.get(i);
+            Puzzle p = puzzles.get(i); //reads puzzles
             Solver solver = new Solver(p);
             for(String word : p.getWords()) {
                 try {
                     Solution s = solver.solve(word);
                     if(s == null) System.err.println("#### Failed to solve " + p.name() + " for '" + word + "'");
-                    else solutions.add(s);
+                    else solutions.add(s); //writes to solutions
                 } catch (Exception e) {
                     System.err.println("#### Exception solving " + p.name() 
                         + " for " + word + ": " + e.getMessage());
@@ -114,5 +133,5 @@ public class WordSearch {
     public final boolean verbose;
 
     private List<Puzzle> puzzles = new ArrayList<>();;
-    private List<Solution> solutions = new ArrayList<>();
+    private SortedSet<Solution> solutions = new TreeSet<Solution>();
 }
