@@ -1,0 +1,288 @@
+FULL CREDIT
+===========
+
+QUESTION 1: Why is String[] args changed to a LinkedList in WordSearch.main? (Hint: Examine the WordSearch constructor!)
+String[] args is changed to a linked list in order to read the number of threads, puzzles and either -h or -v and then remove them, allowing for easy iteration through the remaining arguments which are the puzzles.
+
+
+
+QUESTION 2: How many puzzles did your machine need to solve with 1 thread to run for between 30 and 45 seconds: 
+1500 puzzles
+
+
+
+QUESTION 3: Provide the output of 
+
+    time java WordSearch n 1000 ../puzzle??.txt 
+
+where n is 1 to 16 and 1000 is the number of puzzles specified in Question 2. NOTE: You can run all of these with a single bash command if you like (again, replace 1000 with your number of puzzles from Question 2):
+
+for i in {1..16} ; do time java WordSearch $i 1000 ../puzzle??.txt ; done
+
+Example Timing:
+
+ for i in {1..16} ; do time java WordSearch $i 1000 ../puzzle??.txt ; done
+1000 puzzles
+Thread 0: 0-999
+
+real	0m31.872s
+user	0m32.475s
+sys	0m0.224s
+
+1000 puzzles
+Thread 1: 500-999
+Thread 0: 0-499
+
+real	0m14.376s
+user	0m29.078s
+sys	0m0.229s
+
+...and so on
+
+
+
+YOUR Timing:
+1500 puzzles with 1 threads
+Thread 0: 0-1499
+java WordSearch $i 1500 ../puzzle??.txt  31.81s user 0.26s system 101% cpu 31.598 total
+
+1500 puzzles with 2 threads
+Thread 1: 750-1499
+Thread 0: 0-749
+java WordSearch $i 1500 ../puzzle??.txt  27.35s user 0.25s system 201% cpu 13.681 total
+
+1500 puzzles with 3 threads
+Thread 1: 500-999
+Thread 0: 0-499
+Thread 2: 1000-1499
+java WordSearch $i 1500 ../puzzle??.txt  22.23s user 0.21s system 300% cpu 7.462 total
+
+1500 puzzles with 4 threads
+Thread 0: 0-374
+Thread 3: 1125-1499
+Thread 1: 375-749
+Thread 2: 750-1124
+java WordSearch $i 1500 ../puzzle??.txt  34.63s user 0.23s system 395% cpu 8.807 total
+
+1500 puzzles with 5 threads
+Thread 4: 1200-1499
+Thread 1: 300-599
+Thread 2: 600-899
+Thread 0: 0-299
+Thread 3: 900-1199
+java WordSearch $i 1500 ../puzzle??.txt  26.13s user 0.22s system 491% cpu 5.356 total
+
+1500 puzzles with 6 threads
+Thread 2: 500-749
+Thread 5: 1250-1499
+Thread 0: 0-249
+Thread 4: 1000-1249
+Thread 3: 750-999
+Thread 1: 250-499
+java WordSearch $i 1500 ../puzzle??.txt  29.52s user 0.26s system 588% cpu 5.064 total
+
+1500 puzzles with 7 threads
+Thread 0: 0-213
+Thread 4: 856-1069
+Thread 1: 214-427
+Thread 3: 642-855
+Thread 6: 1284-1497
+Thread 5: 1070-1283
+Thread 2: 428-641
+java WordSearch $i 1500 ../puzzle??.txt  31.87s user 0.27s system 666% cpu 4.825 total
+
+1500 puzzles with 8 threads
+Thread 4: 748-934
+Thread 3: 561-747
+Thread 7: 1309-1495
+Thread 1: 187-373
+Thread 6: 1122-1308
+Thread 5: 935-1121
+Thread 2: 374-560
+Thread 0: 0-186
+java WordSearch $i 1500 ../puzzle??.txt  48.81s user 0.34s system 749% cpu 6.561 total
+
+1500 puzzles with 9 threads
+Thread 6: 996-1161
+Thread 4: 664-829
+Thread 1: 166-331
+Thread 5: 830-995
+Thread 7: 1162-1327
+Thread 2: 332-497
+Thread 3: 498-663
+Thread 0: 0-165
+Thread 8: 1328-1493
+java WordSearch $i 1500 ../puzzle??.txt  46.28s user 0.35s system 756% cpu 6.167 total
+
+1500 puzzles with 10 threads
+Thread 5: 750-899
+Thread 0: 0-149
+Thread 3: 450-599
+Thread 7: 1050-1199
+Thread 1: 150-299
+Thread 4: 600-749
+Thread 2: 300-449
+Thread 8: 1200-1349
+Thread 6: 900-1049
+Thread 9: 1350-1499
+java WordSearch $i 1500 ../puzzle??.txt  34.52s user 0.34s system 745% cpu 4.674 total
+
+1500 puzzles with 11 threads
+Thread 9: 1224-1359
+Thread 10: 1360-1495
+Thread 4: 544-679
+Thread 0: 0-135
+Thread 6: 816-951
+Thread 8: 1088-1223
+Thread 1: 136-271
+Thread 7: 952-1087
+Thread 5: 680-815
+Thread 3: 408-543
+Thread 2: 272-407
+java WordSearch $i 1500 ../puzzle??.txt  49.91s user 0.40s system 761% cpu 6.606 total
+
+1500 puzzles with 12 threads
+Thread 6: 750-874
+Thread 2: 250-374
+Thread 11: 1375-1499
+Thread 8: 1000-1124
+Thread 9: 1125-1249
+Thread 0: 0-124
+Thread 4: 500-624
+Thread 5: 625-749
+Thread 7: 875-999
+Thread 10: 1250-1374
+Thread 1: 125-249
+Thread 3: 375-499
+java WordSearch $i 1500 ../puzzle??.txt  47.51s user 0.39s system 763% cpu 6.277 total
+
+1500 puzzles with 13 threads
+Thread 5: 575-689
+Thread 9: 1035-1149
+Thread 12: 1380-1494
+Thread 2: 230-344
+Thread 4: 460-574
+Thread 6: 690-804
+Thread 0: 0-114
+Thread 1: 115-229
+Thread 3: 345-459
+Thread 11: 1265-1379
+Thread 8: 920-1034
+Thread 10: 1150-1264
+Thread 7: 805-919
+java WordSearch $i 1500 ../puzzle??.txt  50.05s user 0.41s system 748% cpu 6.738 total
+
+1500 puzzles with 14 threads
+Thread 9: 963-1069
+Thread 13: 1391-1497
+Thread 1: 107-213
+Thread 4: 428-534
+Thread 2: 214-320
+Thread 6: 642-748
+Thread 7: 749-855
+Thread 5: 535-641
+Thread 8: 856-962
+Thread 10: 1070-1176
+Thread 11: 1177-1283
+Thread 3: 321-427
+Thread 0: 0-106
+Thread 12: 1284-1390
+java WordSearch $i 1500 ../puzzle??.txt  50.79s user 0.42s system 752% cpu 6.800 total
+
+1500 puzzles with 15 threads
+Thread 5: 500-599
+Thread 3: 300-399
+Thread 13: 1300-1399
+Thread 2: 200-299
+Thread 12: 1200-1299
+Thread 10: 1000-1099
+Thread 11: 1100-1199
+Thread 8: 800-899
+Thread 9: 900-999
+Thread 14: 1400-1499
+Thread 7: 700-799
+Thread 4: 400-499
+Thread 0: 0-99
+Thread 6: 600-699
+Thread 1: 100-199
+java WordSearch $i 1500 ../puzzle??.txt  51.15s user 0.42s system 758% cpu 6.798 total
+
+1500 puzzles with 16 threads
+Thread 6: 558-650
+Thread 9: 837-929
+Thread 10: 930-1022
+Thread 5: 465-557
+Thread 11: 1023-1115
+Thread 0: 0-92
+Thread 2: 186-278
+Thread 4: 372-464
+Thread 12: 1116-1208
+Thread 13: 1209-1301
+Thread 8: 744-836
+Thread 14: 1302-1394
+Thread 3: 279-371
+Thread 1: 93-185
+Thread 15: 1395-1487
+Thread 7: 651-743
+java WordSearch $i 1500 ../puzzle??.txt  51.81s user 0.43s system 766% cpu 6.818 total
+
+
+
+
+
+
+
+QUESTION 3: Does adding more threads continue to speed up the program? Do more threads ever slow down the program even slightly?  Why or why not?
+Adding more threads does not always speed up the program. At some point, adding more threads slows down the program by fractions of a second. This is because the CPU can only process a certain amount of threads at a time.
+
+
+
+
+
+QUESTION 4: Does adding more threads increase the "system load" (sys), or is it constant regardless of the number of threads?  Why?
+Yes, as more threads are added, the system load increases. This is because the CPU has to handle more threads.
+
+
+
+
+
+BONUS
+=====
+
+QUESTION 5: Time your thread pool version of WordSearch exactly as you did for the full credit version. Post your timings here.
+
+YOUR Timing:
+
+
+
+
+
+
+
+QUESTION 6: Is a thread pool faster, slower, or roughly equivalent in performance? 
+
+
+
+
+
+
+
+QUESTION 7: Compare your full credit and bonus solution code. Which do you believe is more supportable over a long lifetime of evolving hardware and environments?
+
+
+
+
+
+
+
+EXTREME BONUS
+=============
+
+QUESTION 8: Post your final timings here. (The "race" on Antares will determine the actual winner - this just lets me know you're competing!)
+
+
+
+
+
+
+
