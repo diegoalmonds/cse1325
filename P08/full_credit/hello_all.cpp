@@ -1,9 +1,10 @@
 #include <iostream>
+#include <string>
 
 int main()
 {
-    std::string input1;
+    std::string input;
     std::cout << "What's your name?" << std::endl;
-    std::cin >> input1;
-    std::cout << "Hello " << input1 << std::endl;
+    getline(std::cin, input);
+    std::cout << "Hello, " << input << std::endl;
 }
