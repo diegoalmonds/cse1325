@@ -39,12 +39,10 @@ std::ostream& operator<<(std::ostream& ost, Time& time)
 
 std::istream& operator>>(std::istream& ist, Time& time)
 {
-    std::string hours, minutes, seconds;
-    std::getline(std::cin, hours, ':');
-    std::getline(std::cin, minutes, ':');
-    std::getline(std::cin, seconds, ':');
-    time._hour = stoi(hours);
-    time._minute = stoi(minutes);
-    time._second = stoi(seconds);
+    //this is wrong, just a placeholder so i don't get an error
+    ist >> time._hour;
+    ist >> time._minute;
+    ist >> time._second;
+
     return ist;
 }

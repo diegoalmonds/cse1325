@@ -3,7 +3,7 @@
 class Time
 {
     public:
-        Time(int hour = 0, int minute = 0, int second = 0);
+        Time(int hour = 0, int minute = 0, int second=0);
         Time operator+(Time time);
         Time& operator++();
         Time operator++(int);
