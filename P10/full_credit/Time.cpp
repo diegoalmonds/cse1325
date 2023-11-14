@@ -2,24 +2,25 @@
 #include <iostream>
 #include <iomanip>
 
-Time::Time(int hour, int minute, int second) : _hour{hour}, _minute{minute}, _second{minute} {rationalize();};
+Time::Time(int hour, int minute, int second) : _hour{hour}, _minute{minute}, _second{second} {rationalize();};
 
 void Time::rationalize()
 {
-    int extra_minutes = 0;
-    int extra_hours = 0;
-    if (_second < 0 || _second > 59)
+    if (_second > 59)
     {
-        extra_minutes = _second / 60;
+        _minute += _second / 60;
         _second = _second % 60;
     }
-    _minute += extra_minutes;
+    if (_second < 0)
+    {
+        _minute += (_second / 60) - 1;
+        _second = 60 + (_second % 60);
+    }
     if (_minute < 0 || _minute > 59)
     {
-        extra_hours = _minute / 60;
+        _hour += _minute / 60;
         _minute = _minute % 60;
     }
-    _hour += extra_hours;
     if (_hour < 0 || _hour > 23)
         _hour = 0;
 }
@@ -29,22 +30,23 @@ Time Time::operator+(Time time)
     time._hour += this->_hour;
     time._minute += this->_minute;
     time._second += this->_second;
-    rationalize();
+    time.rationalize();
     return time;
 }
 
-Time& Time::operator++()
+Time& Time::operator++() //pre-increment
 {
     this->_second++;
     rationalize();
     return *this;
 }
 
-Time Time::operator++(int)
+Time Time::operator++(int) //post-increment
 {
-    this->_second++;
+    Time new_time(*this);
+    (*this).operator++();
     rationalize();
-    return *this;
+    return new_time;
 }
 
 bool Time::operator==(Time& time)
@@ -54,7 +56,9 @@ bool Time::operator==(Time& time)
         if (this->_minute == time._minute)
         {
             if (this->_second == time._second)
+            {
                 return true;
+            }
         }
     }
     return false;
