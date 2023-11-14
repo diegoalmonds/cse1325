@@ -1,5 +1,6 @@
 #include "Time.h"
 #include <iostream>
+#include <iomanip>
 
 Time::Time(int hour, int minute, int second) : _hour{hour}, _minute{minute}, _second{minute} {rationalize();};
 
@@ -25,24 +26,127 @@ void Time::rationalize()
 
 Time Time::operator+(Time time)
 {
-    this->_hour += time._hour;
-    this->_minute += time._minute;
-    this->_second += time._second;
+    time._hour += this->_hour;
+    time._minute += this->_minute;
+    time._second += this->_second;
     rationalize();
+    return time;
 }
 
-std::ostream& operator<<(std::ostream& ost, Time& time)
+Time& Time::operator++()
 {
-    ost << time._hour << ":" << time._minute << ":" << time._second;
+    this->_second++;
+    rationalize();
+    return *this;
+}
+
+Time Time::operator++(int)
+{
+    this->_second++;
+    rationalize();
+    return *this;
+}
+
+bool Time::operator==(Time& time)
+{
+    if (this->_hour == time._hour)
+    {
+        if (this->_minute == time._minute)
+        {
+            if (this->_second == time._second)
+                return true;
+        }
+    }
+    return false;
+}
+
+bool Time::operator!=(Time& time)
+{
+    if (this->_hour == time._hour)
+    {
+        if (this->_minute == time._minute)
+        {
+            if (this->_second == time._second)
+                return false;
+        }
+    }
+    return true;
+}
+
+bool Time::operator<(Time& time)
+{
+    if (this->_hour < time._hour)
+        return true;
+    if (this->_minute < time._minute)
+        return true;
+    if (this->_second < time._second)
+        return true;
+    return false;
+}
+
+bool Time::operator>(Time& time)
+{
+    if (this->_hour > time._hour)
+        return true;
+    if (this->_minute > time._minute)
+        return true;
+    if (this->_second > time._second)
+        return true;
+    return false;
+}
+
+bool Time::operator<=(Time& time)
+{
+    if (this->_hour < time._hour)
+        return true;
+    else if (this->_hour == time._hour)
+    {
+        if (this->_minute < time._minute)
+            return true;
+        else if (this->_minute == time._minute)
+        {
+            if (this->_second < time._second)
+                return true;
+            else if (this->_second == time._second)
+                return true;
+        }
+    }
+    return false;
+}
+
+bool Time::operator>=(Time& time)
+{
+    if (this->_hour > time._hour)
+        return true;
+    else if (this->_hour == time._hour)
+    {
+        if (this->_minute > time._minute)
+            return true;
+        else if (this->_minute == time._minute)
+        {
+            if (this->_second > time._second)
+                return true;
+            else if (this->_second == time._second)
+                return true;
+        }
+    }
+    return false;
+}
+
+std::ostream& operator<<(std::ostream& ost, const Time& time)
+{
+    ost << std::setfill('0') << std::setw(2) << time._hour;
+    ost << ":" << std::setfill('0') << std::setw(2) << time._minute;
+    ost << ":" << std::setfill('0') << std::setw(2) << time._second;
     return ost;
 }
 
 std::istream& operator>>(std::istream& ist, Time& time)
 {
-    //this is wrong, just a placeholder so i don't get an error
     ist >> time._hour;
+    ist.ignore(1, ':');
     ist >> time._minute;
+    ist.ignore(1, ':');
     ist >> time._second;
-
     return ist;
 }

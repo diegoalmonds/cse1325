@@ -13,7 +13,7 @@ class Time
         bool operator>(Time& time);
         bool operator<=(Time& time);
         bool operator>=(Time& time);
-        friend std::ostream& operator<<(std::ostream& ost, Time& time);
+        friend std::ostream& operator<<(std::ostream& ost, const Time& time);
         friend std::istream& operator>>(std::istream& ist, Time& time);    
     private:
         int _hour;

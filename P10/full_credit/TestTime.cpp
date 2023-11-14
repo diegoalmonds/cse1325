@@ -91,6 +91,7 @@ int main(int argc, char* argv[]) {
 
     // -------------------------------------------------------------------------
     // Report overall result (if any failures were detected)
+
     if(result != 0) std::cerr << "FAIL with error code " << result << std::endl;
     return result;
 }
