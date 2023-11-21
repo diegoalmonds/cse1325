@@ -4,6 +4,7 @@
 #include <map>
 
 #include "Index.h"
+#include "Location.h"
 
 void Index::add_word(Word word, std::string filename, int line) { 
     if (_index.find(word) == _index.end()){
@@ -21,7 +22,7 @@ std::ostream& operator<<(std::ostream& ost, Index& index) {
         std::set<Location>::iterator locations_it = index_it->second.begin();
         ost << index_it->first << ": ";
         while (locations_it != index_it->second.end()) { 
-            ost << &(*locations_it);
+            ost << *locations_it;
             locations_it++;
         }
         ost << "\n";

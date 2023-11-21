@@ -1,0 +1,164 @@
+diegoalmonds@Diegos-Macbook full_credit % make
+c++ --std=c++17 -c Index.cpp
+Index.cpp:25:17: error: invalid operands to binary expression ('std::ostream' (aka 'basic_ostream<char>') and 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location'))
+            ost << *locations_it;
+            ~~~ ^  ~~~~~~~~~~~~~
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/cstddef:116:3: note: candidate function template not viable: no known conversion from 'std::ostream' (aka 'basic_ostream<char>') to 'std::byte' for 1st argument
+  operator<< (byte  __lhs, _Integer __shift) noexcept
+  ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:793:1: note: candidate function template not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'char' for 2nd argument
+operator<<(basic_ostream<_CharT, _Traits>& __os, char __cn)
+^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:826:1: note: candidate function template not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'char' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, char __c)
+^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:833:1: note: candidate function template not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'signed char' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, signed char __c)
+^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:840:1: note: candidate function template not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'unsigned char' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, unsigned char __c)
+^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:854:1: note: candidate function template not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'const char *' for 2nd argument
+operator<<(basic_ostream<_CharT, _Traits>& __os, const char* __strn)
+^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:900:1: note: candidate function template not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'const char *' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, const char* __str)
+^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:907:1: note: candidate function template not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'const signed char *' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, const signed char* __str)
+^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:915:1: note: candidate function template not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'const unsigned char *' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, const unsigned char* __str)
+^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:1100:1: note: candidate function template not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'const std::error_code' for 2nd argument
+operator<<(basic_ostream<_CharT, _Traits>& __os, const error_code& __ec)
+^
+./Location.h:15:30: note: candidate function not viable: 2nd argument ('const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location')) would lose const qualifier
+        friend std::ostream& operator<<(std::ostream& ost, Location& location) ;
+                             ^
+Index.cpp:19:15: note: candidate function not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'Index &' for 2nd argument
+std::ostream& operator<<(std::ostream& ost, Index& index) { 
+              ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:786:1: note: candidate template ignored: deduced conflicting types for parameter '_CharT' ('char' vs. 'std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'Location'))
+operator<<(basic_ostream<_CharT, _Traits>& __os, _CharT __c)
+^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__random/uniform_int_distribution.h:259:1: note: candidate template ignored: could not match 'const uniform_int_distribution<_IT>' against 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location')
+operator<<(basic_ostream<_CharT, _Traits>& __os,
+^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:847:1: note: candidate template ignored: could not match 'const _CharT *' against 'std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'Location')
+operator<<(basic_ostream<_CharT, _Traits>& __os, const _CharT* __str)
+^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:1083:1: note: candidate template ignored: could not match 'const basic_string<_CharT, _Traits, _Allocator>' against 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location')
+operator<<(basic_ostream<_CharT, _Traits>& __os,
+^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:1091:1: note: candidate template ignored: could not match 'basic_string_view<_CharT, _Traits>' against 'std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'Location')
+operator<<(basic_ostream<_CharT, _Traits>& __os,
+^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:1108:1: note: candidate template ignored: could not match 'const shared_ptr<_Yp>' against 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location')
+operator<<(basic_ostream<_CharT, _Traits>& __os, shared_ptr<_Yp> const& __p)
+^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:1127:1: note: candidate template ignored: could not match 'const bitset<_Size>' against 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location')
+operator<<(basic_ostream<_CharT, _Traits>& __os, const bitset<_Size>& __x)
+^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:1075:11: note: candidate template ignored: requirement 'integral_constant<bool, false>::value' was not satisfied [with _Stream = std::ostream &, _Tp = Location]
+_Stream&& operator<<(_Stream&& __os, const _Tp& __x)
+          ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:1120:1: note: candidate template ignored: could not match 'const unique_ptr<_Yp, _Dp>' against 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location')
+operator<<(basic_ostream<_CharT, _Traits>& __os, unique_ptr<_Yp, _Dp> const& __p)
+^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:222:20: note: candidate function not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'std::ostream &(*)(std::ostream &)' for 1st argument
+    basic_ostream& operator<<(basic_ostream& (*__pf)(basic_ostream&))
+                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:226:20: note: candidate function not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'basic_ios<std::basic_ostream<char>::char_type, std::basic_ostream<char>::traits_type> &(*)(basic_ios<std::basic_ostream<char>::char_type, std::basic_ostream<char>::traits_type> &)' (aka 'basic_ios<char, std::char_traits<char>> &(*)(basic_ios<char, std::char_traits<char>> &)') for 1st argument
+    basic_ostream& operator<<(basic_ios<char_type, traits_type>&
+                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:231:20: note: candidate function not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'std::ios_base &(*)(std::ios_base &)' for 1st argument
+    basic_ostream& operator<<(ios_base& (*__pf)(ios_base&))
+                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:234:20: note: candidate function not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'bool' for 1st argument
+    basic_ostream& operator<<(bool __n);
+                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:235:20: note: candidate function not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'short' for 1st argument
+    basic_ostream& operator<<(short __n);
+                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:236:20: note: candidate function not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'unsigned short' for 1st argument
+    basic_ostream& operator<<(unsigned short __n);
+                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:237:20: note: candidate function not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'int' for 1st argument
+    basic_ostream& operator<<(int __n);
+                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:238:20: note: candidate function not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'unsigned int' for 1st argument
+    basic_ostream& operator<<(unsigned int __n);
+                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:239:20: note: candidate function not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'long' for 1st argument
+    basic_ostream& operator<<(long __n);
+                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:240:20: note: candidate function not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'unsigned long' for 1st argument
+    basic_ostream& operator<<(unsigned long __n);
+                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:241:20: note: candidate function not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'long long' for 1st argument
+    basic_ostream& operator<<(long long __n);
+                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:242:20: note: candidate function not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'unsigned long long' for 1st argument
+    basic_ostream& operator<<(unsigned long long __n);
+                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:243:20: note: candidate function not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'float' for 1st argument
+    basic_ostream& operator<<(float __f);
+                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:244:20: note: candidate function not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'double' for 1st argument
+    basic_ostream& operator<<(double __f);
+                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:245:20: note: candidate function not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'long double' for 1st argument
+    basic_ostream& operator<<(long double __f);
+                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:246:20: note: candidate function not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'const void *' for 1st argument; take the address of the argument with &
+    basic_ostream& operator<<(const void* __p);
+                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:255:20: note: candidate function not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'basic_streambuf<std::basic_ostream<char>::char_type, std::basic_ostream<char>::traits_type> *' (aka 'basic_streambuf<char, std::char_traits<char>> *') for 1st argument
+    basic_ostream& operator<<(basic_streambuf<char_type, traits_type>* __sb);
+                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ostream:261:20: note: candidate function not viable: no known conversion from 'const std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>::value_type' (aka 'const Location') to 'nullptr_t' (aka 'std::nullptr_t') for 1st argument
+    basic_ostream& operator<<(nullptr_t)
+                   ^
+In file included from Index.cpp:1:
+In file included from /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/iostream:41:
+In file included from /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/ios:221:
+In file included from /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__locale:18:
+In file included from /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/memory:860:
+In file included from /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:16:
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/operations.h:372:21: error: invalid operands to binary expression ('const Location' and 'const Location')
+        {return __x < __y;}
+                ~~~ ^ ~~~
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tree:2020:28: note: in instantiation of member function 'std::less<Location>::operator()' requested here
+    if (__hint == end() || value_comp()(__v, *__hint))  // check before
+                           ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tree:2111:36: note: in instantiation of function template specialization 'std::__tree<Location, std::less<Location>, std::allocator<Location>>::__find_equal<Location>' requested here
+    __node_base_pointer& __child = __find_equal(__p, __parent, __dummy, __k);
+                                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tree:1260:16: note: in instantiation of function template specialization 'std::__tree<Location, std::less<Location>, std::allocator<Location>>::__emplace_hint_unique_key_args<Location, const Location &>' requested here
+        return __emplace_hint_unique_key_args(__p, _NodeTypes::__get_key(__v), __v).first;
+               ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/set:740:25: note: in instantiation of member function 'std::__tree<Location, std::less<Location>, std::allocator<Location>>::__insert_unique' requested here
+                __tree_.__insert_unique(__e, *__f);
+                        ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/set:605:13: note: in instantiation of function template specialization 'std::set<Location>::insert<std::__tree_const_iterator<Location, std::__tree_node<Location, void *> *, long>>' requested here
+            insert(__s.begin(), __s.end());
+            ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/pair.h:197:45: note: in instantiation of member function 'std::set<Location>::set' requested here
+        : first(_VSTD::forward<_U1>(__u1)), second(_VSTD::forward<_U2>(__u2)) {}
+                                            ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/pair.h:361:1: note: candidate template ignored: could not match 'const pair<_T1, _T2>' against 'const Location'
+operator< (const pair<_T1,_T2>& __x, const pair<_T1,_T2>& __y)
+^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/reverse_iterator.h:220:1: note: candidate template ignored: could not match 'const reverse_iterator<_Iter1>' against 'const Location'
+operator<(const reverse_iterator<_Iter1>& __x, const reverse_iterator<_Iter2>& __y)
+^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/tuple:1589:1: note: candidate template ignored: could not match 'const tuple<_Tp...>' against 'const Location'
+operator<(const tuple<_Tp...>& __x, const tuple<_Up...>& __y)
+^
+./Location.h:11:14: note: candidate function not viable: 1st argument ('const Location') would lose const qualifier
+        bool operator<(Location& location) const;
+             ^
+2 errors generated.
+make: *** [Index.o] Error 1
+diegoalmonds@Diegos-Macbook full_credit % 
