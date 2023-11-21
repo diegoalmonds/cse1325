@@ -22,7 +22,8 @@ std::ostream& operator<<(std::ostream& ost, Index& index) {
         std::set<Location>::iterator locations_it = index_it->second.begin();
         ost << index_it->first << ": ";
         while (locations_it != index_it->second.end()) { 
-            ost << *locations_it;
+            Location current_location = Location(*locations_it);
+            ost << current_location;
             locations_it++;
         }
         ost << "\n";
